@@ -1,0 +1,59 @@
+{
+  "enabled": {
+    "description": "启用余额感知",
+    "type": "bool",
+    "default": true
+  },
+  "owner_session": {
+    "description": "提醒发给谁",
+    "type": "string",
+    "default": "",
+    "hint": "例如 napcat:FriendMessage:123456789；留空则取 AstrBot 管理员（admins_id）的第一个私聊会话"
+  },
+  "check_interval_minutes": {
+    "description": "检查间隔（分钟）",
+    "type": "int",
+    "default": 30
+  },
+  "llm_provider_source": {
+    "description": "对话额度对应的凭证 id",
+    "type": "string",
+    "default": "deepseek_default_source",
+    "hint": "provider_sources 里的 id；留空则跳过对话额度检查"
+  },
+  "llm_low_balance": {
+    "description": "对话余额预警线（元）",
+    "type": "float",
+    "default": 5.0,
+    "hint": "低于这个数开始提醒；低于 1 元视为见底"
+  },
+  "vision_provider_source": {
+    "description": "视觉额度对应的凭证 id",
+    "type": "string",
+    "default": "snowbot-caption_source",
+    "hint": "留空则跳过视觉检查"
+  },
+  "vision_low_balance": {
+    "description": "视觉余额预警线（元）",
+    "type": "float",
+    "default": 5.0,
+    "hint": "注意：GLM 免费模型余额为 0 也能用，所以还会做实际探活，探活失败才报「看不清」"
+  },
+  "voice_enabled": {
+    "description": "检查语音可用性",
+    "type": "bool",
+    "default": true,
+    "hint": "火山语音没有余额查询接口，改为读取最近的合成记录判断（连续失败即「嗓子哑了」）"
+  },
+  "notify_cooldown_hours": {
+    "description": "同类提醒冷却（小时）",
+    "type": "float",
+    "default": 6.0,
+    "hint": "同一个问题在冷却期内不重复打扰"
+  },
+  "include_detail": {
+    "description": "提醒里带具体余额数字",
+    "type": "bool",
+    "default": true
+  }
+}

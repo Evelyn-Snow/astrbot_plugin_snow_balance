@@ -1,0 +1,10 @@
+name: astrbot_plugin_snow_balance
+display_name: Bot 余额感知
+desc: 实时感知对话/语音/视觉账户的余额与可用性，额度不足时用自己的口吻私聊主人（饿了、嗓子哑了、看不清了）
+help: 无需指令；对话额度低了她说"饿了"，语音额度见底说"嗓子哑了"，视觉不可用说"看不清"
+version: v0.1.1
+repo: https://github.com/Evelyn-Snow/astrbot_plugin_snow_balance
+author: Evelyn-Snow
+support_platforms:
+  - aiocqhttp
+  - webchat
