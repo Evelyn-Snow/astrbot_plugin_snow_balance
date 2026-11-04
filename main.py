@@ -31,6 +31,7 @@ from .library import (
     CAP_VOICE,
     STATE_OK,
     compose_message,
+    default_voice_log_path,
     format_balance,
     grade_balance,
     grade_voice,
@@ -234,9 +235,13 @@ class SnowBalance(Star):
     def _check_voice(self) -> tuple[str, str]:
         if not bool(self._cfg("voice_enabled", True)):
             return STATE_OK, ""
-        path = Path(
-            str(self._cfg("voice_log_path", "") or "")
-            or str(Path(str(StarTools.get_data_dir("astrbot_plugin_seed_audio_tts"))) / "seed_audio_calls.jsonl")
+        raw_path = str(self._cfg("voice_log_path", "") or "").strip()
+        path = (
+            Path(raw_path)
+            if raw_path
+            else default_voice_log_path(
+                str(StarTools.get_data_dir("astrbot_plugin_seed_audio_tts"))
+            )
         )
         try:
             if not path.exists():

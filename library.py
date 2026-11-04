@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import re
+from pathlib import Path
 
 # 能力标识
 CAP_LLM = "llm"
@@ -146,3 +147,10 @@ def format_balance(value: float, currency: str = "CNY") -> str:
     if value >= 1:
         return f"{symbol}{value:.2f}"
     return f"{symbol}{value:.3f}"
+
+
+def default_voice_log_path(tts_plugin_data_dir: str) -> Path:
+    """种子语音插件把调用日志写在 data/temp，不在自己的 plugin_data 下。"""
+    path = Path(tts_plugin_data_dir)
+    data_root = path.parent.parent if path.parent.name == "plugin_data" else path.parent
+    return data_root / "temp" / "seed_audio_calls.jsonl"

@@ -38,8 +38,8 @@
 | llm_provider_source | deepseek_default_source | 对话凭证 id（`provider_sources` 里的） |
 | llm_low_balance | 5.0 | 对话余额预警线（元） |
 | vision_provider_source | snowbot-caption_source | 视觉凭证 id |
-| vision_low_balance | 5.0 | 视觉余额预警线 |
 | voice_enabled | true | 是否检查语音 |
+| voice_log_path | 空 | 语音调用日志；留空读 data/temp/seed_audio_calls.jsonl |
 | notify_cooldown_hours | 6 | 同类提醒冷却 |
 | include_detail | true | 提醒里带具体金额 |
 
